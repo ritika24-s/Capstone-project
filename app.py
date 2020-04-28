@@ -15,17 +15,17 @@ def create_app(test_config=None):
     setup_db(app)
     migrate = Migrate(app, db)
     CORS(app)
-    #oauth = OAuth(app)
-
-
+    # oauth = OAuth(app)
+    
     @app.after_request
     def after_request(response):
-        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization,true')
-        response.headers.add('Access-Control-Allow-Methods', 'GET,PATCH,PUT,POST,DELETE,OPTIONS')
+        response.headers.add('Access-Control-Allow-Headers', 
+                             'Content-Type,Authorization,true')
+        response.headers.add('Access-Control-Allow-Methods', 
+                             'GET,PATCH,PUT,POST,DELETE,OPTIONS')
         return response
 
-
-    #auth0 = oauth.register(
+    # auth0 = oauth.register(
     #    'auth0',
     #    client_id='zNzK3s62YQ9xAx0RqkTfOWm7NN5U7SCe',
     #    client_secret='1EUaLZASC5yhg5mBABU19WeLwgEXtMt1CMNTHNd6dqbktVjHduPy5mpNXGVT4HQq',
@@ -35,13 +35,11 @@ def create_app(test_config=None):
     #    client_kwargs={
     #        'scope': 'openid profile email',
     #        },
-    #)
-
+    # )
 
     @app.route('/')
     def health():
         return "Hello People!"
-
 
     @app.route('/actors', methods=['GET'])
     @requires_auth('get:actors')
@@ -57,7 +55,6 @@ def create_app(test_config=None):
             'success': True
         }), 200
 
-
     @app.route('/movies', methods=['GET'])
     @requires_auth('get:movies')
     def get_movies(token):
@@ -71,7 +68,6 @@ def create_app(test_config=None):
             'movies': formatted_movies,
             'success': True
         }), 200
-
 
     @app.route('/actors/<id>', methods=['PATCH'])
     @requires_auth('patch:actors')
@@ -103,7 +99,6 @@ def create_app(test_config=None):
         except Exception:
             abort(422)
 
-
     @app.route('/movies/<id>', methods=['PATCH'])
     @requires_auth('patch:movies')
     def update_movie(token, id):
@@ -130,7 +125,6 @@ def create_app(test_config=None):
 
         except Exception:
             abort(422)
-
 
     @app.route('/actors', methods=['POST'])
     @requires_auth('post:actors')
@@ -161,7 +155,6 @@ def create_app(test_config=None):
         except Exception:
             abort(422)
 
-
     @app.route('/movies', methods=['POST'])
     @requires_auth('post:movies')
     def add_movie(token):
@@ -189,7 +182,6 @@ def create_app(test_config=None):
         except Exception:
             abort(422)
 
-
     @app.route('/actors/<id>', methods=['DELETE'])
     @requires_auth('delete:actors')
     def delete_actor(token, id):
@@ -206,7 +198,6 @@ def create_app(test_config=None):
 
         except Exception:
             abort(422)
-
 
     @app.route('/movies/<id>', methods=['DELETE'])
     @requires_auth('delete:movies')
@@ -226,7 +217,6 @@ def create_app(test_config=None):
         except Exception:
             abort(422)
 
-
     @app.errorhandler(404)
     def not_found(error):
         return jsonify({
@@ -234,7 +224,6 @@ def create_app(test_config=None):
             "error": 404,
             "message": "Resource not found"
         }), 404
-
 
     @app.errorhandler(422)
     def unprocessable(error):
@@ -259,7 +248,6 @@ def create_app(test_config=None):
             "error": 500,
             "message": "Server Error"
         }), 500
-
 
     @app.errorhandler(AuthError)
     def auth_error(error):
