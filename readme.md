@@ -53,7 +53,7 @@ Test the endpoints with the latest version of [Postman](https://getpostman.com).
 Import the postman collection "./udacity-fsnd-castingagency.postman_collection.json"
 Right-clicking the collection folder for Casting Assistant, Casting Director and Executive Producer, navigate to the authorization tab, and include the JWT in the token field (you should have noted these JWTs).
 Run the collection.
-The collection points to live application: https://abgarg-capstone.herokuapp.com//
+The collection points to live application: https://casting-project.herokuapp.com/
 ### Testing
 To run the unit tests, execute:
 python test_app.py
