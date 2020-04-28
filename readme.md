@@ -48,7 +48,7 @@ Register 3 users
 Assign the Casting Assistant role to one
 Assign the Casting Director role to another
 Assign the Executive Producer role to the last
-Sign into each account and make note of the JWT.(https://fsndca.auth0.com/authorize?audience=casting agency&response_type=token&client_id=YAZXgqjhCCOCw5EIg4xlQeXukeNKkBmr&redirect_uri=http://localhost:8100)
+Sign into each account and make note of the JWT.(https://capstone-projects.auth0.com/authorize?audience=capstone&response_type=token&client_id=zNzK3s62YQ9xAx0RqkTfOWm7NN5U7SCe&redirect_uri=http://localhost:5000/callback)
 Test the endpoints with the latest version of [Postman](https://getpostman.com).
 Import the postman collection "./udacity-fsnd-castingagency.postman_collection.json"
 Right-clicking the collection folder for Casting Assistant, Casting Director and Executive Producer, navigate to the authorization tab, and include the JWT in the token field (you should have noted these JWTs).
